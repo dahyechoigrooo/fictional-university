@@ -6,6 +6,8 @@
       Version: 1.0
       Author: Choi
       Author URI: https://www.fictional.saichoiblog.com/
+      Text Domain: wcpdomain
+      Domain Path: /languages
     */
 
     class WordCountAndTimePlugin {
@@ -13,6 +15,11 @@
             add_action('admin_menu', array($this, 'adminPage'));
             add_action('admin_init',array($this, 'settings'));
             add_filter('the_content', array($this, 'ifWrap')); ; // 호출하고 워드프레스 훅의 타이밍에 맞게 실행하기 위함.
+            add_action('init', array($this, 'languages'));
+        }
+
+        function languages() {
+            load_plugin_textdomain('wcpdomain', false, dirname(plugin_basename(__FILE__)) . '/languages');
         }
 
         function ifWrap($content) {
@@ -36,11 +43,11 @@
             }
 
             if (get_option('wcp_wordcount', '1') == '1') {
-                $html .= 'This post has ' . $wordCount . 'words.<br>';
+                $html .= esc_html__('This post has', 'wcpdomain').' '. $wordCount.' '.__('words', 'wcpdomain').'<br>';
             }
 
             if (get_option('wcp_charactercount', '1') == '1') {
-                $html .= 'This post has ' . strlen(strip_tags($content)) . 'characters.<br>';
+                $html .= 'This post has ' . strlen(strip_tags($content)) . ' characters.<br>';
             }
 
             if (get_option('wcp_readtime', '1') == '1') {
@@ -102,7 +109,7 @@
             </select>
         <?php }
         function adminPage() {
-            add_options_page('Word Count Settings', 'Word Count', 'manage_options', 'word-count-settings-page', array($this, 'ourHtml')); // Document Title, Setting Menu Name, Role(Manage_options : 옵션 변경 권한을 가진 경우), Slug, HTML
+            add_options_page('Word Count Settings', __('Word Count', 'wcpdomain'), 'manage_options', 'word-count-settings-page', array($this, 'ourHtml')); // Document Title, Setting Menu Name, Role(Manage_options : 옵션 변경 권한을 가진 경우), Slug, HTML
         }
 
         function ourHtml() { ?>
