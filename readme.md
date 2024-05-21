@@ -83,3 +83,9 @@
 - ```cd ~```
 - ```chmod 700 .ssh```
 - ```chmod 600 .ssh/authorized_keys```
+
+## How to use SVG icon on admin menu
+1. Open your svg file.
+2. Copy the svg text.
+3. ```btoa(`Paste svg text here`)``` and copy the results for this command line.
+4. Use the clipboard value as the icon_url value.
