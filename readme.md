@@ -89,3 +89,20 @@
 2. Copy the svg text.
 3. ```btoa(`Paste svg text here`)``` and copy the results for this command line.
 4. Use the clipboard value as the icon_url value.
+
+## How to use JSX
+1. Install node.js on 'nodejs.org'(npm is also installed)
+2. ```node --version```
+3. Install @wordpress/scripts
+4. ````npm init -y```` (The package.json file is created)
+5. ```npm install @wordpress/scripts --save-dev``` (The node_modules folder is created)
+6. Create the src folder and create the index.js file in it.
+7. Add code the package.json file.
+```agsl
+// package.json 
+
+"scripts": {
+  "build": "wp-scripts build",
+  "start": "wp-scripts start",
+```
+8. Command line ```npm run start```(The build folder is created)

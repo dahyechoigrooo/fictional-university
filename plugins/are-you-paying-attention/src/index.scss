@@ -6,6 +6,7 @@
 
   .mark-as-correct {
     color: #ffd700;
+    cursor: pointer;
     position: relative;
     top: -3px;
     transition: transform 0.3s ease-out;
@@ -21,7 +22,7 @@
     top: -5px;
 
     &:hover {
-      color: #c20000!important;
+      color: #c20000 !important;
     }
   }
 }
